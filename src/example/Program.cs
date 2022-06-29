@@ -15,13 +15,14 @@ namespace example
             builder.Services.AddControllers();
             builder.Services.AddHealthChecksUI(setup =>
             {
-                setup.AddHealthCheckEndpoint("IoTSharp HealthChecks", $"http://{System.Net.Dns.GetHostName()}/healthz");
+                setup.AddHealthCheckEndpoint("IoTSharp HealthChecks", $"http://localhost/healthz");
             }).AddInMemoryStorage()
                          .Services.
                             AddHealthChecks()
                             .AddCheck<RandomHealthCheck>("random")
                              .AddInfluxDB(builder.Configuration.GetConnectionString("influx"))
-                             .AddCassandra(builder.Configuration.GetConnectionString("cassandra"));
+                             .AddCassandra(builder.Configuration.GetConnectionString("cassandra"))
+                             .AddIoTDB(builder.Configuration.GetConnectionString("iotdb"));
 
 
             var app = builder.Build();

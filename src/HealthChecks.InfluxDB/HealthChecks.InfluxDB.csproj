@@ -6,6 +6,8 @@
 		<PackageId>IoTSharp.HealthChecks.InfluxDB</PackageId>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Nullable>enable</Nullable>
+		<Company>IoTSharp</Company>
+		<Authors>maikebing</Authors>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -6,6 +6,7 @@ services:
     links:
         - influx
         - cassandra
+        - iotdb
     build:
       context: .
       dockerfile: src/example/Dockerfile
@@ -51,6 +52,16 @@ services:
       - ./data/cassandra/logs:/var/log/cassandra      
     networks:
           - iotsharp-network
+
+  iotdb:
+   image: apache/iotdb:0.13.0-node
+   restart: always
+   container_name: iotdb
+   ports:
+         - 6667:6667
+   networks:
+          - iotsharp-network
+
 networks: 
   iotsharp-network:
       driver:  bridge
