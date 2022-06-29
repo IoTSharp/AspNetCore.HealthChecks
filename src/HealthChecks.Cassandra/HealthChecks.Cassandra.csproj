@@ -3,7 +3,7 @@
 		<TargetFrameworks>net6.0;netstandard2.1</TargetFrameworks>
 		<PackageTags>HealthCheck;Health;Cassandra</PackageTags>
 		<Description>HealthChecks.CassandraCassandra is the health check package for CassandraCassandra.</Description>
-		<PackageId>IoTSharp.HealthChecks.CassandraCassandra</PackageId>
+		<PackageId>IoTSharp.HealthChecks.Cassandra</PackageId>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
