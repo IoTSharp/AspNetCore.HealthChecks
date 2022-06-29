@@ -1,9 +1,9 @@
 # IoTSharp.AspNetCore.HealthChecks
 
-## ÏîÄ¿¼ò½é
+## é¡¹ç›®ç®€ä»‹
 
 
- IoTSharp.AspNetCore.HealthChecks  ÊÇÕë¶Ô.Net ½¡¿µ¼ì²éµÄ×é¼ş¼¯ºÏ¡£
+ IoTSharp.AspNetCore.HealthChecks  æ˜¯é’ˆå¯¹.Net å¥åº·æ£€æŸ¥çš„ç»„ä»¶é›†åˆã€‚
  
 
 ---
@@ -13,10 +13,10 @@
 
 
 
-| NuGetÃû³Æ    | °æ±¾|ÏÂÔØÁ¿| ËµÃ÷                                                     |
+| NuGetåç§°    | ç‰ˆæœ¬|ä¸‹è½½é‡| è¯´æ˜                                                     |
 | ----------- | --------  | --------  | ------------------------------------------------------------ |
-| IoTSharp.HealthChecks.InfluxDB |[![IoTSharp.HealthChecks.InfluxDB](https://img.shields.io/nuget/v/IoTSharp.HealthChecks.InfluxDB.svg)](https://www.nuget.org/packages/IoTSharp.HealthChecks.InfluxDB/) |![Nuget](https://img.shields.io/nuget/dt/IoTSharp.HealthChecks.InfluxDB) |InfluxDB µÄ½¡¿µ¼ì²é×é¼ş¡£
-| IoTSharp.HealthChecks.CassandraCassandra |[![IoTSharp.HealthChecks.CassandraCassandra](https://img.shields.io/nuget/v/IoTSharp.HealthChecks.CassandraCassandra.svg)](https://www.nuget.org/packages/IoTSharp.HealthChecks.CassandraCassandra/) |![Nuget](https://img.shields.io/nuget/dt/IoTSharp.HealthChecks.CassandraCassandra)     |  Cassandra µÄ½¡¿µ¼ì²é×é¼ş
-| IoTSharp.HealthChecks.Taos |[![IoTSharp.HealthChecks.Taos](https://img.shields.io/nuget/v/IoTSharp.HealthChecks.Taos.svg)](https://www.nuget.org/packages/IoTSharp.HealthChecks.Taos/)  |  ![Nuget](https://img.shields.io/nuget/dt/IoTSharp.HealthChecks.Taos)| ¹©Asp.Net Core Ê¹ÓÃµÄ½¡¿µ¼ì²é×é¼ş
+| IoTSharp.HealthChecks.InfluxDB |[![IoTSharp.HealthChecks.InfluxDB](https://img.shields.io/nuget/v/IoTSharp.HealthChecks.InfluxDB.svg)](https://www.nuget.org/packages/IoTSharp.HealthChecks.InfluxDB/) |![Nuget](https://img.shields.io/nuget/dt/IoTSharp.HealthChecks.InfluxDB) |InfluxDB çš„å¥åº·æ£€æŸ¥ç»„ä»¶ã€‚
+| IoTSharp.HealthChecks.Cassandra |[![IoTSharp.HealthChecks.Cassandra](https://img.shields.io/nuget/v/IoTSharp.HealthChecks.Cassandra.svg)](https://www.nuget.org/packages/IoTSharp.HealthChecks.Cassandra/) |![Nuget](https://img.shields.io/nuget/dt/IoTSharp.HealthChecks.Cassandra)     |  Cassandra çš„å¥åº·æ£€æŸ¥ç»„ä»¶
+| IoTSharp.HealthChecks.Taos |[![IoTSharp.HealthChecks.Taos](https://img.shields.io/nuget/v/IoTSharp.HealthChecks.Taos.svg)](https://www.nuget.org/packages/IoTSharp.HealthChecks.Taos/)  |  ![Nuget](https://img.shields.io/nuget/dt/IoTSharp.HealthChecks.Taos)| ä¾›Asp.Net Core ä½¿ç”¨çš„å¥åº·æ£€æŸ¥ç»„ä»¶
 
  
