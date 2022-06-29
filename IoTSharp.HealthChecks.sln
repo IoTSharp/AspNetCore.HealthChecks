@@ -7,9 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthChecks.InfluxDB", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthChecks.Cassandra", "src\HealthChecks.Cassandra\HealthChecks.Cassandra.csproj", "{15F757D8-A6D8-4B24-AF23-B26DEFD3A7DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "example", "src\example\example.csproj", "{E43692FE-A762-4035-B6D7-1DBE40D7A61F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "example", "src\example\example.csproj", "{E43692FE-A762-4035-B6D7-1DBE40D7A61F}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{86D31BB9-6FFD-4F77-8722-A5CEB2168967}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{CF3DA4EB-CBDD-47E6-B917-082A514F3B37}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
