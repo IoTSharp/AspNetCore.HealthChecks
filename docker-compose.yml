@@ -1,0 +1,56 @@
+version: '3.4'
+
+services:
+  example:
+    image: ${DOCKER_REGISTRY-}example
+    links:
+        - influx
+        - cassandra
+    build:
+      context: .
+      dockerfile: src/example/Dockerfile
+    networks:
+          - iotsharp-network
+
+  influx:
+        image: "quay.io/influxdb/influxdb:v2.0.4"
+        restart: always
+        container_name: influx
+        ports:
+         - "8086:8086"
+        environment:
+          TZ: "Asia/Shanghai"
+        volumes:
+         - ./data/influxdb-data:/var/lib/influxdb2
+        command: influxd run --bolt-path /var/lib/influxdb2/influxd.bolt --engine-path /var/lib/influxdb2/engine --store bolt
+        networks:
+          - iotsharp-network
+
+  influxdb_cli:
+    links:
+        - influx
+    image: quay.io/influxdb/influxdb:v2.0.4
+    entrypoint: influx setup --bucket iotsharp-bucket -t iotsharp-tokeniotsharp-tokeniotsharp-tokeniotsharp-tokeniotsharp-token -o iotsharp --username=root --password=1-q2-w3-e4-r5-t --host=http://influx:8086 -f
+    restart: on-failure:20
+    depends_on:
+         - influx
+    networks:
+          - iotsharp-network
+
+  cassandra:
+    image: cassandra:latest
+    container_name: cassandra
+    ports:
+      - 7000:7000
+      - 9042:9042
+    volumes:
+      - ./data/cassandra/commitlog:/var/lib/cassandra/commitlog
+      - ./data/cassandra/hints:/var/lib/cassandra/hints
+      - ./data/cassandra/data:/var/lib/cassandra/data
+      - ./data/cassandra/saved_caches:/var/lib/cassandra/saved_caches
+      - ./data/cassandra/logs:/var/log/cassandra      
+    networks:
+          - iotsharp-network
+networks: 
+  iotsharp-network:
+      driver:  bridge

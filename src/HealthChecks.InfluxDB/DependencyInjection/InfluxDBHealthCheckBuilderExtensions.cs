@@ -177,7 +177,6 @@ namespace Microsoft.Extensions.DependencyInjection
         /// Add a health check for InfluxDB services using <see cref="InfluxDBClient"/> from service provider.
         /// </summary>
         /// <param name="builder">The <see cref="IHealthChecksBuilder"/>.</param>
-        /// <param name="name">The health check name. Optional. If <c>null</c> the type name 'InfluxDB' will be used for the name.</param>
         /// <param name="failureStatus">
         /// The <see cref="HealthStatus"/> that should be reported when the health check fails. Optional. If <c>null</c> then
         /// the default status of <see cref="HealthStatus.Unhealthy"/> will be reported.
@@ -185,12 +184,12 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="tags">A list of tags that can be used to filter sets of health checks. Optional.</param>
         /// <param name="timeout">An optional System.TimeSpan representing the timeout of the check.</param>
         /// <returns>The <see cref="IHealthChecksBuilder"/>.</returns>
-        public static IHealthChecksBuilder AddInfluxDB(this IHealthChecksBuilder builder, string? name = default, HealthStatus? failureStatus = default, IEnumerable<string>? tags = default, TimeSpan? timeout = default)
+        public static IHealthChecksBuilder AddInfluxDB(this IHealthChecksBuilder builder,  HealthStatus? failureStatus = default, IEnumerable<string>? tags = default, TimeSpan? timeout = default)
         {
             builder.Services.AddSingleton(sp => new InfluxDBHealthCheck(sp.GetRequiredService<InfluxDBClient>()));
 
             return builder.Add(new HealthCheckRegistration(
-                name ?? NAME,
+                 NAME,
                 sp => sp.GetRequiredService<InfluxDBHealthCheck>(),
                 failureStatus,
                 tags,
