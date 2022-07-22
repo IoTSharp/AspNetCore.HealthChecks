@@ -30,6 +30,7 @@ namespace HealthChecks.InfluxDB
         {
             try
             {
+                var hea =await _influxdb_client.HealthAsync();
                 var ready = await _influxdb_client.ReadyAsync();
                 var ping = await _influxdb_client.PingAsync();
                 var hs = ping && ready.Status == Ready.StatusEnum.Ready ? HealthStatus.Healthy : context.Registration.FailureStatus;

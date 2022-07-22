@@ -27,17 +27,7 @@ services:
         networks:
           - iotsharp-network
 
-  influxdb_cli:
-    links:
-        - influx
-    image: quay.io/influxdb/influxdb:v2.0.4
-    entrypoint: influx setup --bucket iotsharp-bucket -t iotsharp-tokeniotsharp-tokeniotsharp-tokeniotsharp-tokeniotsharp-token -o iotsharp --username=root --password=1-q2-w3-e4-r5-t --host=http://influx:8086 -f
-    restart: on-failure:20
-    depends_on:
-         - influx
-    networks:
-          - iotsharp-network
-
+ 
   cassandra:
     image: cassandra:latest
     container_name: cassandra

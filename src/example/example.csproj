@@ -12,16 +12,29 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="AspNetCore.HealthChecks.UI" Version="6.0.4" />
-		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="6.0.4" />
-		<PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="6.0.4" />
-		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.1" />
+		<PackageReference Include="Apache.IoTDB" Version="0.13.0.7-alpha" />
+		<PackageReference Include="Apache.IoTDB.Data" Version="0.13.0.7-alpha" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI" Version="6.0.5" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="6.0.5" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="6.0.5" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.16.1" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\HealthChecks.Cassandra\HealthChecks.Cassandra.csproj" />
-		<ProjectReference Include="..\HealthChecks.InfluxDB\HealthChecks.InfluxDB.csproj" />
-		<ProjectReference Include="..\HealthChecks.IoTDB\HealthChecks.IoTDB.csproj" />
+		<ProjectReference Include="..\HealthChecks.Cassandra\HealthChecks.Cassandra.csproj">
+		  <Private>True</Private>
+		  <CopyLocalSatelliteAssemblies>True</CopyLocalSatelliteAssemblies>
+		</ProjectReference>
+		<ProjectReference Include="..\HealthChecks.InfluxDB\HealthChecks.InfluxDB.csproj">
+		  <CopyLocalSatelliteAssemblies>True</CopyLocalSatelliteAssemblies>
+		  <Private>True</Private>
+		</ProjectReference>
+		<ProjectReference Include="..\HealthChecks.IoTDB\HealthChecks.IoTDB.csproj">
+		  <Private>True</Private>
+		  <CopyLocalSatelliteAssemblies>True</CopyLocalSatelliteAssemblies>
+		</ProjectReference>
 	</ItemGroup>
+
+	<ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>
