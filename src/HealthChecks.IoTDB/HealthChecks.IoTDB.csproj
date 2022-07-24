@@ -9,10 +9,14 @@
 		<Nullable>enable</Nullable>
 		<Company>IoTSharp</Company>
 		<Authors>maikebing</Authors>
+		<RestoreAdditionalProjectSources>
+			https://api.nuget.org/v3/index.json;
+		</RestoreAdditionalProjectSources>
+		<Version>1.0.1</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Apache.IoTDB.Data" Version="0.13.0.7-alpha" PrivateAssets="all" />
+		<PackageReference Include="Apache.IoTDB.Data" Version="0.13.0.7-alpha" />
 		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.7" />
 		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="6.0.7" />
 	</ItemGroup>
