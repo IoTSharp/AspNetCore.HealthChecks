@@ -41,7 +41,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
 
         /// <summary>
-        /// Add a health check for IoTDB services using <see cref="CassandraClient"/> from service provider.
+        /// Add a health check for IoTDB services using <see cref="Apache.IoTDB.Data"/> from service provider.
         /// </summary>
         /// <param name="builder">The <see cref="IHealthChecksBuilder"/>.</param>
         /// <param name="name">The health check name. Optional. If <c>null</c> the type name 'IoTDB' will be used for the name.</param>
@@ -54,7 +54,29 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>The <see cref="IHealthChecksBuilder"/>.</returns>
         public static IHealthChecksBuilder AddIoTDB(this IHealthChecksBuilder builder, HealthStatus? failureStatus = default, IEnumerable<string>? tags = default, TimeSpan? timeout = default)
         {
-            builder.Services.AddSingleton(sp => new IoTDBHealthCheck(sp.GetRequiredService<SessionPool>()));
+ 
+            builder.Services.AddSingleton(sp =>
+            {
+                IoTDBHealthCheck hc;
+                var spl = sp.GetService<SessionPool>();
+                if (spl != null)
+                {
+                    hc = new IoTDBHealthCheck(spl);
+                }
+                else
+                {
+                    var itc = sp.GetService<Apache.IoTDB.Data.IoTDBConnection>();
+                    if (itc != null)
+                    {
+                        hc = new IoTDBHealthCheck(itc.SessionPool);
+                    }
+                    else
+                    {
+                        throw new Exception("Can't found SessionPool or IoTDBConnection");
+                    }
+                }
+                return hc;
+                });
 
             return builder.Add(new HealthCheckRegistration(
                  NAME,
