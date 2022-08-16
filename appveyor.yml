@@ -1,0 +1,30 @@
+version: 1.0.{build}
+image: Visual Studio 2022
+configuration: Release
+platform: Any CPU
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+dotnet_csproj:
+  patch: true
+  file: '***\*.csproj'
+  version: '{version}'
+  version_prefix: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
+build_script:
+- cmd: dotnet build  -c Release  IoTSharp.HealthChecks.sln
+artifacts:
+- path: src\HealthChecks.Cassandra\bin\Release\*.nupkg
+  name: HealthChecks.Cassandra
+- path: src\HealthChecks.InfluxDB\bin\Release\*.nupkg
+  name: HealthChecks.InfluxDB
+- path: src\HealthChecks.IoTDB\bin\Release\*.nupkg
+  name: HealthChecks.IoTDB
+- path: src\HealthChecks.NTPServer\bin\Release\*.nupkg
+  name: HealthChecks.NTPServer

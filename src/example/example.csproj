@@ -33,6 +33,7 @@
 		  <Private>True</Private>
 		  <CopyLocalSatelliteAssemblies>True</CopyLocalSatelliteAssemblies>
 		</ProjectReference>
+		<ProjectReference Include="..\HealthChecks.NTPServer\HealthChecks.NTPServer.csproj" />
 	</ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
