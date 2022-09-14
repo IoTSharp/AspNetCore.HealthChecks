@@ -28,3 +28,5 @@ artifacts:
   name: HealthChecks.IoTDB
 - path: src\HealthChecks.NTPServer\bin\Release\*.nupkg
   name: HealthChecks.NTPServer
+- path: src\HealthChecks.ClickHouse\bin\Release\*.nupkg
+  name: HealthChecks.ClickHouse
