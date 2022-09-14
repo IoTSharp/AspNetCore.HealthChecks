@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+<PropertyGroup>
+    <FileVersion>1.0.0</FileVersion>
+    <Product>HealthChecks.ClickHouse</Product>
+    <Authors>Kuzminov Stanislav,IoTSharp</Authors>
+    <Description>ClickHouse db health check</Description>
+    <Title>IoTSharp.HealthChecks.ClickHouse</Title>
+    <PackageId>IoTSharp.HealthChecks.ClickHouse</PackageId>
+    <PackageTags>ClickHouse healthcheck </PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/skuzminoff/HealthChecks.ClickHouse</PackageProjectUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl> 
+ </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+     <LangVersion>latest</LangVersion>
+     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+ 
+
+  <ItemGroup>
+    <PackageReference Include="ClickHouse.Client" Version="5.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.9" />
+  </ItemGroup>
+</Project>

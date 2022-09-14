@@ -22,6 +22,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthChecks.IoTDB", "src\H
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthChecks.NTPServer", "src\HealthChecks.NTPServer\HealthChecks.NTPServer.csproj", "{49183943-D498-4F29-B1C8-9FAB0F3454BA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthChecks.ClickHouse", "src\HealthChecks.ClickHouse\HealthChecks.ClickHouse.csproj", "{13291139-ABD8-468B-BCF7-9BA6B3057F62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{49183943-D498-4F29-B1C8-9FAB0F3454BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49183943-D498-4F29-B1C8-9FAB0F3454BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49183943-D498-4F29-B1C8-9FAB0F3454BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13291139-ABD8-468B-BCF7-9BA6B3057F62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13291139-ABD8-468B-BCF7-9BA6B3057F62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13291139-ABD8-468B-BCF7-9BA6B3057F62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13291139-ABD8-468B-BCF7-9BA6B3057F62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
