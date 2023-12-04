@@ -15,7 +15,7 @@ namespace example
             builder.Services.AddControllers();
             builder.Services.AddHealthChecksUI(setup =>
             {
-                setup.AddHealthCheckEndpoint("IoTSharp HealthChecks", $"http://localhost/healthz");
+                setup.AddHealthCheckEndpoint("IoTSharp HealthChecks", $"http://localhost:8080/healthz");
             }).AddInMemoryStorage()
                          .Services.
                             AddHealthChecks()

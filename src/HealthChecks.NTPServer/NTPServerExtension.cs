@@ -23,8 +23,8 @@ namespace Microsoft.Extensions.DependencyInjection
             byte[] ntpData = new byte[48];
             // Setting the Leap Indicator, Version Number and Mode values
             ntpData[0] = 0x1B; // LI = 0 (no warning), VN = 3 (IPv4 only), Mode = 3 (Client Mode)
-
-            IPAddress ip = IPAddress.Parse(ntpServer);
+            var ips = Dns.GetHostAddresses(ntpServer);
+            IPAddress ip = ips?.FirstOrDefault() ;
 
             // The UDP port number assigned to NTP is 123
             IPEndPoint ipEndPoint = new IPEndPoint(ip, 123);//addresses[0]
@@ -51,9 +51,7 @@ namespace Microsoft.Extensions.DependencyInjection
             ulong milliseconds = (intPart * 1000) + ((fractPart * 1000) / 0x100000000UL);
             // UTC time
             DateTime webTime = (new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc)).AddMilliseconds(milliseconds);
-            // Local time
-            DateTime dt = webTime.ToLocalTime();
-            return dt;
+            return webTime;
         }
         public static IHealthChecksBuilder AddDateTimeHealthCheck(this IHealthChecksBuilder builder)
         {
@@ -74,7 +72,7 @@ namespace Microsoft.Extensions.DependencyInjection
                     for (int i = 0; i < 3; i++)
                     {
                         var webtime1 = getWebTime(ntpserver);
-                        dtx.Add((i, webtime1, DateTime.Now));
+                        dtx.Add((i, webtime1, DateTime.UtcNow));
                     }
                     var avg_w_l_TimeSpan = from t in dtx select t.locdateTime.Subtract(t.webtime).TotalSeconds;
                     var avgweb_loc = avg_w_l_TimeSpan.Average();
