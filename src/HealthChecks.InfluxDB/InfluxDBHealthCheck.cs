@@ -5,45 +5,52 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HealthChecks.InfluxDB
+namespace HealthChecks.InfluxDB;
+
+public class InfluxDBHealthCheck : IHealthCheck, IDisposable
 {
-    public class InfluxDBHealthCheck
-        : IHealthCheck, IDisposable
+    private readonly InfluxDBClient _influxDbClient;
+
+    public InfluxDBHealthCheck(Func<InfluxDBClientOptions.Builder, InfluxDBClientOptions> _options)
     {
-        private readonly InfluxDBClient _influxdb_client;
+        _influxDbClient = new InfluxDBClient(_options.Invoke(InfluxDBClientOptions.Builder.CreateNew()));
+    }
 
-        public InfluxDBHealthCheck(string url, string username, char[] password) => _influxdb_client = InfluxDBClientFactory.Create(url, username, password);
+    public InfluxDBHealthCheck(InfluxDBClient influxDBClient)
+    {
+        _influxDbClient = influxDBClient;
+    }
 
-        public InfluxDBHealthCheck(string url, string token) => _influxdb_client = InfluxDBClientFactory.Create(url, token);
-
-        public InfluxDBHealthCheck(InfluxDBClientOptions options) => _influxdb_client = InfluxDBClientFactory.Create(options);
-
-        public InfluxDBHealthCheck(string url, string username, char[] password, string database, string retentionPolicy) => _influxdb_client = InfluxDBClientFactory.CreateV1(url, username, password, database, retentionPolicy);
-
-        public InfluxDBHealthCheck(string influxDBConnectionString) => _influxdb_client = InfluxDBClientFactory.Create(influxDBConnectionString);
-
-        public InfluxDBHealthCheck(InfluxDBClient influxdb_client) => _influxdb_client = influxdb_client;
-
-        public InfluxDBHealthCheck(Uri influxDBConnectionString) => _influxdb_client = InfluxDBClientFactory.Create(influxDBConnectionString.ToString());
-
-        public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
+    /// <inheritdoc />
+    public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
+    {
+        try
         {
-            try
+            var ready = await _influxDbClient.ReadyAsync();
+            var ping = await _influxDbClient.PingAsync();
+            var ok = ping && ready.Status == Ready.StatusEnum.Ready;
+            if (ok)
             {
-                var hea =await _influxdb_client.HealthAsync();
-                var ready = await _influxdb_client.ReadyAsync();
-                var ping = await _influxdb_client.PingAsync();
-                var hs = ping && ready.Status == Ready.StatusEnum.Ready ? HealthStatus.Healthy : context.Registration.FailureStatus;
-                return new HealthCheckResult(hs, hs == HealthStatus.Healthy ? "" : $"Status:{ready?.Status} Started:{ready?.Started} Up:{ready?.Up}");
+                var me = await _influxDbClient.GetUsersApi().MeAsync(cancellationToken);
+                if (me?.Status == User.StatusEnum.Active)
+                {
+                    return HealthCheckResult.Healthy($"Started:{ready.Started} Up:{ready.Up}");
+                }
+                else
+                {
+                    return HealthCheckResult.Degraded($"User status is {me?.Status}.");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                return new HealthCheckResult(context.Registration.FailureStatus, exception: ex);
+                return HealthCheckResult.Unhealthy($"Ping:{ping} Status:{ready.Status} Started:{ready.Started} Up:{ready.Up}");
             }
         }
-
-        public void Dispose() => _influxdb_client.Dispose();
-
-
+        catch (Exception ex)
+        {
+            return HealthCheckResult.Unhealthy(ex.Message, exception: ex);
+        }
     }
+
+    public void Dispose() => _influxDbClient.Dispose();
 }

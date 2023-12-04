@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;netstandard2.1</TargetFrameworks>
+		<TargetFrameworks>net7.0</TargetFrameworks>
 		<PackageTags>HealthCheck;Health;InfluxDB</PackageTags>
 		<Description>HealthChecks.InfluxDB is the health check package for InfluxDB.</Description>
 		<PackageId>IoTSharp.HealthChecks.InfluxDB</PackageId>
@@ -12,7 +12,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="InfluxDB.Client" Version="4.3.0" />
+		<PackageReference Include="InfluxDB.Client" Version="4.14.0" />
 		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.7" />
 	</ItemGroup>
 </Project>
