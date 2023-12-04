@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0</TargetFrameworks>
+		<TargetFrameworks>net8.0</TargetFrameworks>
 		<PackageTags>HealthCheck;Health;IoTDB</PackageTags>
 		<Description>HealthChecks.IoTDB is the health check package for IoTDB.</Description>
 		<PackageId>IoTSharp.HealthChecks.IoTDB</PackageId>
@@ -16,9 +16,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Apache.IoTDB.Data" Version="0.13.0.7-alpha" />
-		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.7" />
-		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="6.0.7" />
+		<PackageReference Include="Apache.IoTDB.Data" Version="1.0.0.3" />
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="8.0.0" />
 	</ItemGroup>
 
 </Project>

@@ -20,7 +20,7 @@ namespace example
                          .Services.
                             AddHealthChecks()
                             .AddCheck<RandomHealthCheck>("random")
-                             .AddInfluxDB(builder.Configuration.GetConnectionString("influx"))
+                             .AddInfluxDB(connectionString: builder.Configuration.GetConnectionString("influx"))
                              .AddCassandra(builder.Configuration.GetConnectionString("cassandra"))
                              .AddIoTDB(builder.Configuration.GetConnectionString("iotdb"))
                              .AddDateTimeHealthCheck();

@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;netstandard2.1</TargetFrameworks>
+		<TargetFramework>net8.0</TargetFramework>
 		<PackageTags>HealthCheck;Health;Cassandra</PackageTags>
-		<Description>HealthChecks.CassandraCassandra is the health check package for CassandraCassandra.</Description>
+		<Description>HealthChecks.Cassandra is the health check package for Cassandra.</Description>
 		<PackageId>IoTSharp.HealthChecks.Cassandra</PackageId>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Nullable>enable</Nullable>
@@ -12,7 +12,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CassandraCSharpDriver" Version="3.18.0" />
-		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.7" />
+		<PackageReference Include="CassandraCSharpDriver" Version="3.19.5" />
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="8.0.0" />
 	</ItemGroup>
 </Project>
