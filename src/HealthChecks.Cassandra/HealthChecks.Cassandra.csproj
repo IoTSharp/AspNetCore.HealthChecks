@@ -1,18 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
-		<PackageTags>HealthCheck;Health;Cassandra</PackageTags>
-		<Description>HealthChecks.Cassandra is the health check package for Cassandra.</Description>
-		<PackageId>IoTSharp.HealthChecks.Cassandra</PackageId>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Nullable>enable</Nullable>
-		<Company>IoTSharp</Company>
-		<Authors>maikebing</Authors>
-		<Version>1.0.1</Version>
-	</PropertyGroup>
-
-	<ItemGroup>
-		<PackageReference Include="CassandraCSharpDriver" Version="3.19.5" />
-		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="8.0.0" />
-	</ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <PackageTags>HealthCheck;Health;Cassandra</PackageTags>
+    <Description>HealthChecks.Cassandra is the health check package for Cassandra.</Description>
+    <PackageId>IoTSharp.HealthChecks.Cassandra</PackageId>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Nullable>enable</Nullable>
+    <Company>IoTSharp</Company>
+    <Authors>maikebing</Authors>
+    <Version>1.0.1</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="CassandraCSharpDriver" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" />
+  </ItemGroup>
 </Project>

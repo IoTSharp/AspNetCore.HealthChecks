@@ -1,24 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-	<PropertyGroup>
-		<TargetFrameworks>net8.0</TargetFrameworks>
-		<PackageTags>HealthCheck;Health;IoTDB</PackageTags>
-		<Description>HealthChecks.IoTDB is the health check package for IoTDB.</Description>
-		<PackageId>IoTSharp.HealthChecks.IoTDB</PackageId>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Nullable>enable</Nullable>
-		<Company>IoTSharp</Company>
-		<Authors>maikebing</Authors>
-		<RestoreAdditionalProjectSources>
+  <PropertyGroup>
+    <TargetFrameworks>net8.0</TargetFrameworks>
+    <PackageTags>HealthCheck;Health;IoTDB</PackageTags>
+    <Description>HealthChecks.IoTDB is the health check package for IoTDB.</Description>
+    <PackageId>IoTSharp.HealthChecks.IoTDB</PackageId>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Nullable>enable</Nullable>
+    <Company>IoTSharp</Company>
+    <Authors>maikebing</Authors>
+    <RestoreAdditionalProjectSources>
 			https://api.nuget.org/v3/index.json;
 		</RestoreAdditionalProjectSources>
-		<Version>1.0.2</Version>
-	</PropertyGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Apache.IoTDB.Data" Version="1.0.0.3" />
-		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="8.0.0" />
-	</ItemGroup>
-
+    <Version>1.0.2</Version>
+    <TargetFramework>net9.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Apache.IoTDB.Data" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" />
+  </ItemGroup>
 </Project>

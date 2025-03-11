@@ -1,24 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-	<PropertyGroup>
-		<Version>1.0.1</Version>
-		<Product>HealthChecks.ClickHouse</Product>
-		<Authors>Kuzminov Stanislav,IoTSharp</Authors>
-		<Description>ClickHouse db health check</Description>
-		<Title>IoTSharp.HealthChecks.ClickHouse</Title>
-		<PackageId>IoTSharp.HealthChecks.ClickHouse</PackageId>
-		<PackageTags>ClickHouse healthcheck </PackageTags>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageProjectUrl>https://github.com/skuzminoff/HealthChecks.ClickHouse</PackageProjectUrl>
-		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-	</PropertyGroup>
-	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
-		<LangVersion>latest</LangVersion>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-	</PropertyGroup>
-	<ItemGroup>
-		<PackageReference Include="ClickHouse.Client" Version="6.8.1" />
-		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="8.0.0" />
-	</ItemGroup>
+  <PropertyGroup>
+    <Version>1.0.1</Version>
+    <Product>HealthChecks.ClickHouse</Product>
+    <Authors>Kuzminov Stanislav,IoTSharp</Authors>
+    <Description>ClickHouse db health check</Description>
+    <Title>IoTSharp.HealthChecks.ClickHouse</Title>
+    <PackageId>IoTSharp.HealthChecks.ClickHouse</PackageId>
+    <PackageTags>ClickHouse healthcheck </PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/skuzminoff/HealthChecks.ClickHouse</PackageProjectUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="ClickHouse.Client" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" />
+  </ItemGroup>
 </Project>
