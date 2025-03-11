@@ -1,6 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net8.0</TargetFrameworks>
     <PackageTags>HealthCheck;Health;InfluxDB</PackageTags>
     <Description>HealthChecks.InfluxDB is the health check package for InfluxDB.</Description>
     <PackageId>IoTSharp.HealthChecks.InfluxDB</PackageId>

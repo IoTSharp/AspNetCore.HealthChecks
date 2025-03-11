@@ -1,6 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net8.0</TargetFrameworks>
     <PackageTags>HealthCheck;Health;IoTDB</PackageTags>
     <Description>HealthChecks.IoTDB is the health check package for IoTDB.</Description>
     <PackageId>IoTSharp.HealthChecks.IoTDB</PackageId>
