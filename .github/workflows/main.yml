@@ -1,0 +1,76 @@
+name: Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+env:
+  VERSION: 10.0.${{ github.run_number }}
+  NUGET_SOURCE: https://api.nuget.org/v3/index.json
+  GITHUB_NUGET_SOURCE: https://nuget.pkg.github.com/IoTSharp/index.json
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+          include-prerelease: true
+
+      - name: Restore
+        run: dotnet restore IoTSharp.HealthChecks.sln
+
+      - name: Build
+        run: |
+          dotnet build IoTSharp.HealthChecks.sln \
+            -c Release \
+            /p:Version=${{ env.VERSION }} \
+            /p:PackageVersion=${{ env.VERSION }} \
+            /p:AssemblyVersion=${{ env.VERSION }} \
+            /p:FileVersion=${{ env.VERSION }} \
+            /p:InformationalVersion=${{ env.VERSION }} \
+            /p:VersionPrefix=${{ env.VERSION }}
+
+      - name: Upload NuGet packages (artifacts)
+        uses: actions/upload-artifact@v4
+        with:
+          name: healthchecks-packages
+          path: |
+            src/HealthChecks.Cassandra/bin/Release/*.nupkg
+            src/HealthChecks.InfluxDB/bin/Release/*.nupkg
+            src/HealthChecks.IoTDB/bin/Release/*.nupkg
+            src/HealthChecks.NTPServer/bin/Release/*.nupkg
+            src/HealthChecks.ClickHouse/bin/Release/*.nupkg
+
+      # 发布到 nuget.org
+      - name: Publish to NuGet (skip on PR)
+        if: github.event_name != 'pull_request'
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          dotnet nuget push "src/HealthChecks.Cassandra/bin/Release/*.nupkg" --api-key "${NUGET_API_KEY}" --source "${NUGET_SOURCE}" --skip-duplicate
+          dotnet nuget push "src/HealthChecks.InfluxDB/bin/Release/*.nupkg" --api-key "${NUGET_API_KEY}" --source "${NUGET_SOURCE}" --skip-duplicate
+          dotnet nuget push "src/HealthChecks.IoTDB/bin/Release/*.nupkg" --api-key "${NUGET_API_KEY}" --source "${NUGET_SOURCE}" --skip-duplicate
+          dotnet nuget push "src/HealthChecks.NTPServer/bin/Release/*.nupkg" --api-key "${NUGET_API_KEY}" --source "${NUGET_SOURCE}" --skip-duplicate
+          dotnet nuget push "src/HealthChecks.ClickHouse/bin/Release/*.nupkg" --api-key "${NUGET_API_KEY}" --source "${NUGET_SOURCE}" --skip-duplicate
+
+      # 发布到 GitHub Packages (nuget.pkg.github.com/IoTSharp)
+      - name: Publish to GitHub Packages (skip on PR)
+        if: github.event_name != 'pull_request'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          dotnet nuget push "src/HealthChecks.Cassandra/bin/Release/*.nupkg" --api-key "${GITHUB_TOKEN}" --source "${GITHUB_NUGET_SOURCE}" --skip-duplicate
+          dotnet nuget push "src/HealthChecks.InfluxDB/bin/Release/*.nupkg" --api-key "${GITHUB_TOKEN}" --source "${GITHUB_NUGET_SOURCE}" --skip-duplicate
+          dotnet nuget push "src/HealthChecks.IoTDB/bin/Release/*.nupkg" --api-key "${GITHUB_TOKEN}" --source "${GITHUB_NUGET_SOURCE}" --skip-duplicate
+          dotnet nuget push "src/HealthChecks.NTPServer/bin/Release/*.nupkg" --api-key "${GITHUB_TOKEN}" --source "${GITHUB_NUGET_SOURCE}" --skip-duplicate
+          dotnet nuget push "src/HealthChecks.ClickHouse/bin/Release/*.nupkg" --api-key "${GITHUB_TOKEN}" --source "${GITHUB_NUGET_SOURCE}" --skip-duplicate
